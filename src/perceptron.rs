@@ -12,7 +12,7 @@ impl Perceptron {
                 assert_eq!(w.len(), n, "weights must have length equal to n");
                 w.to_vec()
             }
-            None => vec![0.0; n],
+            None => vec![1.0; n],
         };
 
         Self {

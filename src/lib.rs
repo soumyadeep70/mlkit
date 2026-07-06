@@ -1,11 +1,18 @@
 pub mod perceptron;
 
 use pyo3::prelude::*;
-
 use crate::perceptron::Perceptron;
 
+#[pymodule]
+#[pyo3(name = "mlkit")]
+fn mlkit(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_class::<PyPerceptron>()?;
+    Ok(())
+}
+
+
 #[pyclass(name = "Perceptron")]
-pub struct PyPerceptron {
+struct PyPerceptron {
     inner: Perceptron,
 }
 
