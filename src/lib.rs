@@ -19,14 +19,13 @@ struct PyPerceptron {
 #[pymethods]
 impl PyPerceptron {
     #[new]
-    #[pyo3(signature = (n, weights=None, bias=None, step_threshold=None))]
-    fn new(n: usize, weights: Option<Vec<f32>>, bias: Option<f32>, step_threshold: Option<f32>) -> PyResult<Self> {
+    #[pyo3(signature = (n, weights=None, bias=None))]
+    fn new(n: usize, weights: Option<Vec<f32>>, bias: Option<f32>) -> PyResult<Self> {
         Ok(Self {
             inner: Perceptron::new(
                 n,
                 weights.as_deref(),
                 bias,
-                step_threshold,
             ),
         })
     }
